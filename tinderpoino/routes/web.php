@@ -15,7 +15,10 @@ use App\Http\Controllers\UserController;
 */
 Route::group(['prefix' => 'users', 'middleware' => 'auth'], function () {
     Route::get('show/{id}', [UserController::class,'show'])->name('users.show');
+    Route::get('edit/{id}', [UserController::class,'edit'])->name('users.edit'); // この行を追記
+    Route::post('update/{id}', [UserController::class,'update'])->name('users.update'); // この行を追記
 });
+
 
 Auth::routes();
 Route::get('/', function () {

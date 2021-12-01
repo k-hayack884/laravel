@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image; //ここを追記
 use App\Services\CheckExtensionServices;
 use App\Services\FileUploadServices; //追加
 
