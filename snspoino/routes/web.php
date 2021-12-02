@@ -1,5 +1,7 @@
 <?php
-
+if (config('app.env') === 'ngrok') {
+    URL::forceScheme('https');
+}
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'ArticleController@index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
