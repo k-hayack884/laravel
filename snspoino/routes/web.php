@@ -1,7 +1,5 @@
 <?php
-if (config('app.env') === 'ngrok') {
-    URL::forceScheme('https');
-}
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', 'ArticleController@index');
+Route::get('/', 'ArticleController@index')->name('articles.index');;
+Route::resource('/articles', 'ArticleController')->except(['index'])->middleware('auth'); //-- この行を追加
+Route::resource('/articles', 'ArticleController')->only(['show']);
 
 Auth::routes();
 
